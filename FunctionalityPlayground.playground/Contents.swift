@@ -1,5 +1,10 @@
 import UIKit
 
+// 2
+/*
+Pure Function - то-есть чистые функции, это такие функции, которые обрабатывают только данные, которые имеют сами, например входные, но изменяют внешние данные например глобальные переменные. Результат выполнения таких функций всегда предстказуем.
+*/
+
 // 3
 var myArray = [1, 3, 2, 4, 7, -1, 2]
 
@@ -58,9 +63,26 @@ newFunc(firstFunc: {
 
 public var myNewArray = [1, 3, 2, 4, 7, -1, 2]
 
-func sortMyArray () -> [Int]) {
-    
+func sortMyArray(func1: (_ x1: Int,_ x2: Int) -> Bool) -> [Int] {
+   var array2 = myNewArray
+   var i = 0
+    while i < array2.count {
+        var a = func1(array2[i], array2[i + 1])
+        if a == true {
+            var el = array2[i + 1]
+            array2[i] = array2[i + 1]
+            array2[i] = el
+        }
+    print(array2)
+    }
+    return array2
 }
-sortMyArray { <#([Int]) -> Void#> in
-    <#code#>
+
+sortMyArray { x1, x2 in
+    if x1 > x2 {
+        return true
+    } else {
+        return false
+    }
+    
 }
