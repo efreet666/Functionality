@@ -61,28 +61,45 @@ newFunc(firstFunc: {
 //Напишите функцию, которая сортирует массив по переданному алгоритму: принимает в себя массив чисел и функцию, которая берёт на вход два числа, возвращает Bool (должно ли первое число идти после второго) и возвращает массив, отсортированный по этому алгоритму.
 
 
-public var myNewArray = [1, 3, 2, 4, 7, -1, 2]
+public var myNewArray = [1, 10, 2, 4, 7, -1, 2]
 
-func sortMyArray(func1: (_ x1: Int,_ x2: Int) -> Bool) -> [Int] {
-   var array2 = myNewArray
-   var i = 0
-    while i < array2.count {
-        var a = func1(array2[i], array2[i + 1])
-        if a == true {
-            var el = array2[i + 1]
-            array2[i] = array2[i + 1]
-            array2[i] = el
+func sortMyArray(func1: (_ x1: Int, _ x2: Int) -> Bool) -> [Int] {
+    var array2 = myNewArray
+    
+    for i in 0..<array2.count {
+        let index = (array2.count - 1) - i
+        
+        for j in 0..<index{
+            
+            if func1(array2[j], array2[j + 1]) == true {
+                let el = array2[j]
+                array2[j] = array2[j + 1]
+                array2[j + 1 ] = el
+            }
         }
-    print(array2)
     }
     return array2
 }
 
 sortMyArray { x1, x2 in
-    if x1 > x2 {
-        return true
-    } else {
+    if x1 < x2 {
         return false
+    } else {
+        return true
     }
-    
 }
+
+// 9
+// Напишите своими словами, что такое infix-, suffix-, prefix-операторы.
+
+/*
+ suffix-, prefix-операторы - это такие операторы с помощью которых мы можем "вырезать" определнную часть строки prefix с начала строки, suffix с конца соответсвенно
+ А с помощью infix мы можем сделать свои кастомные операторы, включающие более одного оператора и дополнительные параметры
+ */
+
+//Пример
+var str = "Hello, world"
+str.prefix(6)
+str.suffix(5)
+
+
